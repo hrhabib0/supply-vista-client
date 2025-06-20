@@ -1,14 +1,30 @@
 import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import AuthContext from '../../contexts/AuthContext/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
-    const { user } = use(AuthContext)
-    const links = <>
-
-        <li><NavLink to={'/'}>Home</NavLink></li>
-
-    </>
+    const { user, signOutUser } = use(AuthContext)
+    const links =
+        <>
+            <li><NavLink to={'/'}>Home</NavLink></li>
+        </>
+    const handleSignOut = () => {
+        console.log('sign out button')
+        signOutUser()
+            .then(() => {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Register Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                alert(error)
+            })
+    }
     return (
         <div className="navbar bg-[#1D4ED8] shadow-sm">
             <div className="navbar-start">
@@ -34,7 +50,11 @@ const Navbar = () => {
                 <div>
                     {
                         user ?
-                            <button>Log Out</button> :
+                            <div className='flex items-center gap-4'>
+                                {/* <img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /> */}
+                                <a className='btn btn-soft btn-primary' onClick={handleSignOut}> Log Out </a>
+                            </div>
+                            :
                             <>
                                 <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
                                 <Link to={'/register'} className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link>
