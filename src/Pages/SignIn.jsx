@@ -1,10 +1,13 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
 
 const SignIn = () => {
     const { signInUser } = use(AuthContext);
+    const navigate =useNavigate();
+    const location = useLocation();
+    const from = location?.state || '/'
     const handleSignInUser = e => {
         e.preventDefault();
         const form = e.target;
@@ -23,7 +26,13 @@ const SignIn = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    navigate(from)
                 }
+                // if(loading){
+                //      return <span className="loading loading-infinity loading-xl"></span>
+                // }else{
+                //     return 
+                // }
             })
             .catch(error => {
                 console.log(error)
