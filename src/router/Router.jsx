@@ -6,6 +6,7 @@ import RootLayouts from "../layouts/RootLayouts";
 import Home from "../Pages/Home";
 import SignIn from "../Pages/SignIn";
 import Register from "../Pages/Register";
+import MyProfile from "../Pages/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
           path: 'register',
           Component: Register,
+        },
+        {
+          path: 'my-profile',
+          Component: MyProfile,
         },
     ]
   },

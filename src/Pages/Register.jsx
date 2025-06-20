@@ -4,27 +4,34 @@ import AuthContext from '../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { createUser } = use(AuthContext)
+    const { createUser, updateUser, setUser } = use(AuthContext)
+    
     const handleRegisterUser = e => {
         e.preventDefault();
         console.log('register button ok')
         const form = e.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        const photo = form.photo.value;
+        console.log(email, password, photo, name)
 
         // create a user
         createUser(email, password)
             .then(res => {
-                if (res.user) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Register Successfull",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
+                const user = res.user;
+                updateUser({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        setUser({ ...user, displayName: name, photoURL: photo })
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Register Successfull",
+                            text: `${user.displayName || 'User'} login successfully!`,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    })
             })
             .catch(error => {
                 alert(error)
@@ -42,7 +49,7 @@ const Register = () => {
                         <label className="label">Email</label>
                         <input type="email" name='email' className="input w-full" placeholder="Your Email" required />
                         <label className="label">Photo URL</label>
-                        <input type="url" name='url' className="input w-full" placeholder="Your Profile URL" required />
+                        <input type="url" name='photo' className="input w-full" placeholder="Your Profile URL" required />
                         <label className="label">Password</label>
                         <input
                             type="password"

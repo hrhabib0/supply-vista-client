@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext)
+    console.log(user)
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
@@ -51,7 +52,7 @@ const Navbar = () => {
                     {
                         user ?
                             <div className='flex items-center gap-4'>
-                                {/* <img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /> */}
+                                <Link to={'/my-profile'}><img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /></Link>
                                 <a className='btn btn-soft btn-primary' onClick={handleSignOut}> Log Out </a>
                             </div>
                             :
