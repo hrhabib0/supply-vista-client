@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import AuthContext from '../../contexts/AuthContext/AuthContext';
 
 const Navbar = () => {
+    const { user } = use(AuthContext)
     const links = <>
 
         <li><NavLink to={'/'}>Home</NavLink></li>
@@ -30,8 +32,16 @@ const Navbar = () => {
             <div className="navbar-end">
                 {/* <a className="btn">Button</a> */}
                 <div>
-                    <Link className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
-                    <Link className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link>
+                    {
+                        user ?
+                            <button>Log Out</button> :
+                            <>
+                                <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
+                                <Link to={'/register'} className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link>
+                            </>
+                    }
+                    {/* <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
+                    <Link to={'/register'} className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link> */}
                 </div>
             </div>
         </div>
