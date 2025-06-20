@@ -22,17 +22,12 @@ const SignIn = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Register Successfull",
+                        title: "sign in Successfull",
                         showConfirmButton: false,
                         timer: 1500
                     });
                     navigate(from)
                 }
-                // if(loading){
-                //      return <span className="loading loading-infinity loading-xl"></span>
-                // }else{
-                //     return 
-                // }
             })
             .catch(error => {
                 console.log(error)
