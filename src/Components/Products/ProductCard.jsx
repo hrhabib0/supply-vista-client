@@ -1,10 +1,11 @@
 import { Rating } from '@smastrom/react-rating';
 import React from 'react';
 import '@smastrom/react-rating/style.css'
+import { Link } from 'react-router';
 
 const ProductCard = ({ product }) => {
     console.log(product)
-    const { productName, product_image, description, category, price, rating, brand } = product;
+    const {_id, productName, product_image, description, category, price, rating, brand } = product;
     return (
         <div className="card bg-base-100 shadow-sm">
             <figure className="">
@@ -32,7 +33,7 @@ const ProductCard = ({ product }) => {
                 {/* <h2 className="card-title">{productName}</h2>
                 <p>{description}</p> */}
                 <div className="card-actions">
-                    <button className="btn btn-primary">Update Product</button>
+                    <Link to={`/update-product/${_id}`} className="btn btn-primary">Update Product</Link>
                 </div>
             </div>
         </div>

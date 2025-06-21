@@ -10,6 +10,7 @@ import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../Routes/PrivateRoute";
 import AddProduct from "../Pages/AddProduct";
 import AllProducts from "../Pages/AllProducts";
+import UpdateProduct from "../Pages/UpdateProduct";
 
 
 const router = createBrowserRouter([
@@ -25,9 +26,14 @@ const router = createBrowserRouter([
           element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
-          path: 'all-products',
+          path: 'products',
           element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
           loader: ()=>fetch('http://localhost:3000/products').then(res=>res.json())
+        },
+        {
+          path: 'update-product/:id',
+          element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`)
         },
         {
           path: 'sign-in',
