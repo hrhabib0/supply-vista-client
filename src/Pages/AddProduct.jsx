@@ -1,15 +1,37 @@
 import React, { use } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddProduct = () => {
-    const {user} = use(AuthContext)
-    const handleAddProduct = e =>{
+    const { user } = use(AuthContext)
+    const handleAddProduct = e => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries())
         console.log(formData.entries());
         console.log(data)
+
+        // send data to the database
+        axios.post('http://localhost:3000/products', data)
+            .then(res => {
+                console.log(res)
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Product Add Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    form.reset()
+                }
+
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className='my-10'>
@@ -20,10 +42,10 @@ const AddProduct = () => {
                     <legend className="fieldset-legend">Basic Info</legend>
 
                     <label className="label">Product Name</label>
-                    <input type="text" className="input w-full" name='productName' placeholder="Product Name" required/>
+                    <input type="text" className="input w-full" name='productName' placeholder="Product Name" required />
 
                     <label className="label">Product Image</label>
-                    <input type="url" className="input w-full" name='product_image' placeholder="Product Image URL" required/>
+                    <input type="url" className="input w-full" name='product_image' placeholder="Product Image URL" required />
                 </fieldset>
 
                 {/* Product Category */}
@@ -69,7 +91,7 @@ const AddProduct = () => {
                     <legend className="fieldset-legend">Product Rating</legend>
 
                     <label className="label">Rating</label>
-                    <input type="number" className="input w-full" name='rating' min="1" max="5"  placeholder="Product Rating(1-5)" />
+                    <input type="number" className="input w-full" name='rating' min="1" max="5" placeholder="Product Rating(1-5)" />
                 </fieldset>
 
                 {/* Brand info */}
