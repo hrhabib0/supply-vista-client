@@ -4,7 +4,7 @@ import Navbar from '../Components/Navbar/Navbar';
 
 const RootLayouts = () => {
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
         </div>

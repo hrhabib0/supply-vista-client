@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../Routes/PrivateRoute";
 import AddProduct from "../Pages/AddProduct";
+import AllProducts from "../Pages/AllProducts";
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
         {
           path: 'add-product',
           element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+        },
+        {
+          path: 'all-products',
+          element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
+          loader: ()=>fetch('http://localhost:3000/products').then(res=>res.json())
         },
         {
           path: 'sign-in',

@@ -10,6 +10,7 @@ const Navbar = () => {
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
             <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
+            <li><NavLink to={'/all-products'}>All Products</NavLink></li>
         </>
     const handleSignOut = () => {
         console.log('sign out button')
