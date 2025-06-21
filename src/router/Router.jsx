@@ -8,6 +8,7 @@ import SignIn from "../Pages/SignIn";
 import Register from "../Pages/Register";
 import MyProfile from "../Pages/MyProfile";
 import PrivateRoute from "../Routes/PrivateRoute";
+import AddProduct from "../Pages/AddProduct";
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     children:[
         {
             index: true, Component: Home,
+        },
+        {
+          path: 'add-product',
+          element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         {
           path: 'sign-in',
