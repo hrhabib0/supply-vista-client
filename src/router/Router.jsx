@@ -14,6 +14,7 @@ import UpdateProduct from "../Pages/UpdateProduct";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsConditions from "../Pages/TermsConditions";
 import CategoryProducts from "../Pages/CategoryProducts";
+import ProductDetails from "../Pages/ProductDetails";
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
           path: 'products',
           element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
           loader: ()=>fetch('http://localhost:3000/products').then(res=>res.json())
+        },
+        {
+          path: 'products/:id',
+          element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+          loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`)
         },
         {
           path: 'update-product/:id',

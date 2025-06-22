@@ -26,9 +26,17 @@ const CategoryProducts = () => {
         <div>
             <h1>Showing Result : {categoryProducts.length}</h1>
             <h1 className='text-4xl font-bold text-center py-5'>Category: {categoryName}</h1>
-            <div className='grid grid-cols-3 gap-4'>
+            <div>
                 {
-                    categoryProducts.map(product=><CategoryProductCard product={product}></CategoryProductCard>)
+                    categoryProducts.length > 0 ?
+                        <div className='grid grid-cols-3 gap-4'>
+                            {categoryProducts.map(product => <CategoryProductCard product={product}></CategoryProductCard>)}
+                        </div> : 
+                        <div className='text-center mt-20 border border-red-500 '>
+                            <h1 className='text-3xl'>This category product will be coming soon.</h1>
+                            <h1>Stay with us...</h1>
+                        </div>
+
                 }
             </div>
         </div>

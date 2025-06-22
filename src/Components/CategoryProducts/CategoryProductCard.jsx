@@ -33,7 +33,7 @@ const CategoryProductCard = ({ product }) => {
                         </div>
                     </div>
                     <div className="card-actions">
-                        <Link to={`/update-product/${_id}`} className="btn btn-primary">View Details</Link>
+                        <Link to={`/products/${_id}`} className="btn btn-primary">View Details</Link>
                     </div>
                 </div>
             </div>
