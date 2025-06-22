@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 
 const Banner = () => {
     return (
-        <div className='h-[100px]'>
+        <div className=''>
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
@@ -23,7 +23,7 @@ const Banner = () => {
             >
                 <SwiperSlide>
                     <div>
-                        <img src={'https://i.ibb.co/h1gG64cK/offer-one.png'}  alt="offer-one" className='w-full h-[400px]' />
+                        <img src={'https://i.ibb.co/tpNM4Mvj/t-shirt.png'}  alt="offer-one" className='w-full h-[400px]' />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
@@ -33,7 +33,7 @@ const Banner = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
-                        <img src={'https://i.ibb.co/h1gG64cK/offer-one.png'} alt="offer-one" className='w-full h-[400px]' />
+                        <img src={'https://i.ibb.co/cXywvRxD/video-games.jpg'} alt="offer-one" className='w-full h-[400px]' />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
