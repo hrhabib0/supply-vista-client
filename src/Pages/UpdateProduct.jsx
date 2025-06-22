@@ -5,19 +5,17 @@ import Swal from 'sweetalert2';
 
 const UpdateProduct = () => {
     const { _id, productName, product_image, category, total, minimumSell, description, price, rating, brand, brand_email } = useLoaderData()
-    // console.log(product)
     const handleUpdateProduct = e => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const updatedProduct = Object.fromEntries(formData.entries())
-        console.log(updatedProduct)
 
         // send update data to the backend
         axios.put(`http://localhost:3000/products/${_id}`, updatedProduct)
             .then(res => {
                 console.log("update prodcut", res.data)
-                if(res.data.modifiedCount){
+                if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
@@ -50,9 +48,10 @@ const UpdateProduct = () => {
                 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
                     <legend className="fieldset-legend">Product Category</legend>
                     <select defaultValue={category} name='category' className="select w-full" required>
-                        <option disabled={true} value="">Product Category</option>
+                        <option disabled={true} value="">Select Product Category</option>
                         <option value="Electronics & Gadgets">Electronics & Gadgets</option>
                         <option value="Home & Kitchen Appliances">Home & Kitchen Appliances</option>
+                        <option value="Fashion & Apparel">Fashion & Apparel</option>
                         <option value="Industrial Machinery & Tools">Industrial Machinery & Tools</option>
                         <option value="Health & Beauty">Health & Beauty</option>
                         <option value="Automotive Parts & Accessories">Automotive Parts & Accessories</option>

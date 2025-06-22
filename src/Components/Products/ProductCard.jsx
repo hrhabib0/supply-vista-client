@@ -5,20 +5,22 @@ import { Link } from 'react-router';
 
 const ProductCard = ({ product }) => {
     console.log(product)
-    const {_id, productName, product_image, description, category, price, rating, brand } = product;
+    const { _id, productName, product_image, description, category, price, rating, brand } = product;
+    const shortDescription = description.slice(0,100) +'...';
+    console.log(shortDescription)
     return (
         <div className="card bg-base-100 shadow-sm">
-            <figure className="">
+            <figure className="h-52">
                 <img
                     src={product_image}
                     alt="Shoes"
-                    className="" />
+                    className="object-cover" />
             </figure>
             <div className="card-body items-center bg-gray-400">
                 <div className='flex'>
                     <div className='flex-1'>
                         <h2 className="card-title">{productName}</h2>
-                        <p>{description}</p>
+                        <p>{shortDescription}</p>
                         <div>
                             <Rating style={{ maxWidth: 150 }} value={rating} readOnly></Rating>
                         </div>
@@ -30,8 +32,6 @@ const ProductCard = ({ product }) => {
                         <p>{price} BDT</p>
                     </div>
                 </div>
-                {/* <h2 className="card-title">{productName}</h2>
-                <p>{description}</p> */}
                 <div className="card-actions">
                     <Link to={`/update-product/${_id}`} className="btn btn-primary">Update Product</Link>
                 </div>

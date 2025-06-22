@@ -1,10 +1,11 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
 
 const Register = () => {
-    const { createUser, updateUser, setUser, googleSignInUser } = use(AuthContext)
+    const { createUser, updateUser, setUser, googleSignInUser } = use(AuthContext);
+    const navigate = useNavigate()
 
     const handleRegisterUser = e => {
         e.preventDefault();
@@ -31,6 +32,7 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        navigate('/')
                     })
             })
             .catch(error => {

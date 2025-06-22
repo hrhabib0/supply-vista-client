@@ -8,7 +8,7 @@ const Home = () => {
         fetch('http://localhost:3000/categories')
         .then(res=>res.json())
         .then(data=>setCategories(data))
-    },[])
+    },[categories])
     // const categoriesPromise = fetch('http://localhost:3000/categories').then(res=>res.json())
     return (
         <div>

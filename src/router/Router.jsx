@@ -13,6 +13,7 @@ import AllProducts from "../Pages/AllProducts";
 import UpdateProduct from "../Pages/UpdateProduct";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsConditions from "../Pages/TermsConditions";
+import CategoryProducts from "../Pages/CategoryProducts";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
           path: 'update-product/:id',
           element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`)
+        },
+        {
+          path: 'categories/:categoryName',
+          element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
         },
         {
           path: 'terms-conditions',

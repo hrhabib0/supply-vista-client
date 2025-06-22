@@ -55,6 +55,7 @@ const AddProduct = () => {
                         <option disabled={true} value="">Product Category</option>
                         <option value="Electronics & Gadgets">Electronics & Gadgets</option>
                         <option value="Home & Kitchen Appliances">Home & Kitchen Appliances</option>
+                        <option value="Fashion & Apparel">Fashion & Apparel</option>
                         <option value="Industrial Machinery & Tools">Industrial Machinery & Tools</option>
                         <option value="Health & Beauty">Health & Beauty</option>
                         <option value="Automotive Parts & Accessories">Automotive Parts & Accessories</option>
