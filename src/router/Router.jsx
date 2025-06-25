@@ -32,17 +32,17 @@ const router = createBrowserRouter([
         {
           path: 'products',
           element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-          loader: ()=>fetch('http://localhost:3000/products').then(res=>res.json())
+          loader: ()=>fetch('https://b2b-market-server.vercel.app/products').then(res=>res.json())
         },
         {
           path: 'products/:id',
           element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`)
+          loader: ({params}) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
         },
         {
           path: 'update-product/:id',
           element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:3000/products/${params.id}`)
+          loader: ({params}) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
         },
         {
           path: 'categories/:categoryName',

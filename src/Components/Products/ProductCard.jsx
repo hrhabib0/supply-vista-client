@@ -4,10 +4,8 @@ import '@smastrom/react-rating/style.css'
 import { Link } from 'react-router';
 
 const ProductCard = ({ product }) => {
-    console.log(product)
     const { _id, productName, product_image, description, category, price, rating, brand } = product;
     const shortDescription = description.slice(0,100) +'...';
-    console.log(shortDescription)
     return (
         <div className="card bg-base-100 shadow-sm">
             <figure className="h-52">

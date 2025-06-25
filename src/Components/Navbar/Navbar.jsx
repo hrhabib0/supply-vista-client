@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext)
-    console.log(user)
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
@@ -13,7 +12,6 @@ const Navbar = () => {
             <li><NavLink to={'/products'}>All Products</NavLink></li>
         </>
     const handleSignOut = () => {
-        console.log('sign out button')
         signOutUser()
             .then(() => {
                 Swal.fire({

@@ -9,18 +9,17 @@ const CategoryProducts = () => {
     const [categoryProducts, setCategoryProduct] = useState([])
     useEffect(() => {
         if (categoryName) {
-            axios.get(`http://localhost:3000/products/?category=${encodeURIComponent(categoryName)}`)
+            axios.get(`https://b2b-market-server.vercel.app/products/?category=${encodeURIComponent(categoryName)}`)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     setCategoryProduct(res.data)
                 })
                 .catch(error => {
-                    console.log(error)
+                    // console.log(error)
+                    alert(error)
                 })
         }
     }, [categoryName])
-
-    console.log(categoryProducts)
 
     return (
         <div>

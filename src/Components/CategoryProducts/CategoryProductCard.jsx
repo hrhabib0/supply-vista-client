@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 const CategoryProductCard = ({ product }) => {
     const { _id, productName, product_image, description, category, price, rating, brand } = product;
     const shortDescription = description.slice(0, 100) + '...';
-    console.log(shortDescription)
     return (
         <div>
             

@@ -10,13 +10,10 @@ const AddProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries())
-        console.log(formData.entries());
-        console.log(data)
 
         // send data to the database
-        axios.post('http://localhost:3000/products', data)
+        axios.post('https://b2b-market-server.vercel.app/products', data)
             .then(res => {
-                console.log(res)
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -30,7 +27,7 @@ const AddProduct = () => {
 
             })
             .catch(error => {
-                console.log(error)
+                alert(error)
             })
     }
     return (

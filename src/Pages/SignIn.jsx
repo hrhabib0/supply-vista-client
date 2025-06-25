@@ -13,11 +13,9 @@ const SignIn = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
         // sign in a user
         signInUser(email, password)
             .then(res => {
-                console.log(res);
                 if (res.user) {
                     Swal.fire({
                         position: "top-end",
@@ -30,13 +28,13 @@ const SignIn = () => {
                 }
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
+                alert(error)
             })
     }
     const handleGoogleSignIn = () => {
         googleSignInUser()
             .then(result => {
-                console.log(result);
                 const user = result.user;
                 if (result.user) {
                     Swal.fire({

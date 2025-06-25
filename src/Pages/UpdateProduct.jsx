@@ -12,9 +12,9 @@ const UpdateProduct = () => {
         const updatedProduct = Object.fromEntries(formData.entries())
 
         // send update data to the backend
-        axios.put(`http://localhost:3000/products/${_id}`, updatedProduct)
+        axios.put(`https://b2b-market-server.vercel.app/products/${_id}`, updatedProduct)
             .then(res => {
-                console.log("update prodcut", res.data)
+                // console.log("update prodcut", res.data)
                 if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",
@@ -26,7 +26,7 @@ const UpdateProduct = () => {
                 }
             })
             .catch(error => {
-                console.log(error)
+                alert(error)
             })
     }
     return (

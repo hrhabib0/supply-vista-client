@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Components/Home/Banner';
 import Categories from '../Components/Home/Categories';
+import About from '../Components/Home/About';
+import Reviews from '../Components/Home/Reviews';
 
 const Home = () => {
     const [categories, setCategories] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:3000/categories')
+        fetch('https://b2b-market-server.vercel.app/categories')
         .then(res=>res.json())
         .then(data=>setCategories(data))
     },[categories])
-    // const categoriesPromise = fetch('http://localhost:3000/categories').then(res=>res.json())
+    // const categoriesPromise = fetch('https://b2b-market-server.vercel.app/categories').then(res=>res.json())
     return (
         <div>
             <Banner></Banner>
             <Categories categories={categories}></Categories>
+            <Reviews></Reviews>
+            <About></About>
         </div>
     );
 };

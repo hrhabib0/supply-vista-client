@@ -9,13 +9,11 @@ const Register = () => {
 
     const handleRegisterUser = e => {
         e.preventDefault();
-        console.log('register button ok')
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
-        console.log(email, password, photo, name)
 
         // create a user
         createUser(email, password)
@@ -43,7 +41,6 @@ const Register = () => {
     const handleGoogleSignUp = () => {
         googleSignInUser()
             .then(result => {
-                console.log(result);
                 const user = result.user;
                 if (result.user) {
                     Swal.fire({
