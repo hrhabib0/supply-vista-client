@@ -10,6 +10,10 @@ const AddProduct = () => {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries())
+        data.total = Number(data.total);
+        data.minimumSell = Number(data.minimumSell);
+        data.price = Number(data.price);
+        data.rating = Number(data.rating)
 
         // send data to the database
         axios.post('https://b2b-market-server.vercel.app/products', data)

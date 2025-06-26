@@ -1,16 +1,59 @@
 import { Rating } from '@smastrom/react-rating';
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { useLoaderData } from 'react-router';
+import AuthContext from '../contexts/AuthContext/AuthContext';
+import axios from 'axios';
 
 const ProductDetails = () => {
-    const { product_image, productName, description, price, category,rating,brand } = useLoaderData()
-    const [quantity, setQuantity] = useState(1);
+    const { user } = use(AuthContext)
+    const data = useLoaderData();
+    const [product, setProduct] = useState(data)
+    const { _id, product_image, productName, description, price, category, rating, brand, total, minimumSell } = product;
+    // const [totalQuantity, setTotalQuantity] = useState(total)
+    const [orderQuantity, setOrderQuantity] = useState(1);
 
     const handleDecrement = () => {
-        if (quantity > 1) setQuantity(quantity - 1)
+        if (orderQuantity > 1) setOrderQuantity(orderQuantity - 1)
     }
     const handleIncrement = () => {
-        setQuantity(quantity + 1)
+        setOrderQuantity(orderQuantity + 1)
+    }
+
+    const handleOrder = (e) => {
+        e.preventDefault();
+        const order_quantity = orderQuantity;
+        if (order_quantity < minimumSell){
+            alert('Increase Quantity');
+            return;
+        }
+        // const remainingStock = total - order;
+        // console.log('remaining ', remainingStock)
+        const form = e.target;
+        const customer = form.customer.value;
+        const customer_email = form.customer_email.value;
+
+        const orderData = {
+            orderId: _id,
+            customer,
+            customer_email,
+            order_quantity,
+        }
+        console.log(orderData)
+        // save orderData to the database
+        axios.post('http://localhost:3000/orders', orderData)
+            .then(res => {
+                if (res.data.insertedId) {
+                    document.getElementById('my_modal_1').close();
+                    setProduct(prev=>{
+                        return {...prev, total:prev.total-order_quantity}
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+            })
+        // console.log('order quantity', order)
+
     }
 
     return (
@@ -26,23 +69,44 @@ const ProductDetails = () => {
                     <h2 className="text-3xl font-bold">{productName}</h2>
                     <p className='md:w-1/2 text-lg font-thin'>{description}</p>
                     <p className=''>TK {price}</p>
-                    <div className='flex items-center'>
-                        <button onClick={handleDecrement} disabled={quantity === 1} className='btn btn-sm'>-</button>
-                        <input
-                            type="text"
-                            value={quantity}
-                            className='w-12 text-center'
-                        />
-                        <button onClick={handleIncrement} className='btn btn-sm'>+</button>
-                    </div>
+                    <p className=''>Total Stock: {total}</p>
                     <p className='text-2xl font-thin'>Brand: <span className='text-blue-500'>{brand}</span></p>
                     <p className='text-2xl font-thin'>Category: <span className='text-green-500'>{category}</span></p>
                     <div>
                         <Rating style={{ maxWidth: 150 }} value={rating} readOnly></Rating>
                     </div>
-                    <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
-                    </div>
+                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                    <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Buy Now</button>
+                    <dialog id="my_modal_1" className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Fill up the form!</h3>
+
+                            <div className="">
+                                <form onSubmit={handleOrder} method="dialog">
+                                    <label className=''>
+                                        <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} />
+                                    </label>
+                                    <label className="input mb-3">
+                                        <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} />
+                                    </label>
+                                    <div className="validator-hint hidden">Enter valid email address</div>
+                                    <div className='flex items-center'>
+                                        <button type='button' onClick={handleDecrement} disabled={orderQuantity === 1} className='btn btn-sm'>-</button>
+                                        <input
+                                            type="text"
+                                            name="order_quantity"
+                                            value={orderQuantity}
+                                            onChange={(e) => setOrderQuantity(e.target.value)}
+                                            className='w-12 text-center'
+                                        />
+                                        <button type='button' onClick={handleIncrement} className='btn btn-sm'>+</button>
+                                    </div>
+                                    {/* if there is a button in form, it will close the modal */}
+                                    <button className="btn mt-3">Buy</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
                 </div>
             </div>
         </div>
