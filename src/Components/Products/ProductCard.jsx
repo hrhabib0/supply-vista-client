@@ -5,13 +5,14 @@ import { Link } from 'react-router';
 
 const ProductCard = ({ product }) => {
     const { _id, productName, product_image, description, category, price, rating, brand } = product;
-    const shortDescription = description?.slice(0,100) +'...';
+    const shortDescription = description?.slice(0, 100) + '...';
     return (
+
         <div className="card bg-base-100 shadow-sm">
             <figure className="h-52">
                 <img
                     src={product_image}
-                    alt="Shoes"
+                    alt="Product Image"
                     className="object-cover" />
             </figure>
             <div className="card-body items-center bg-gray-400">
