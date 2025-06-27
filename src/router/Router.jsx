@@ -15,6 +15,7 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsConditions from "../Pages/TermsConditions";
 import CategoryProducts from "../Pages/CategoryProducts";
 import ProductDetails from "../Pages/ProductDetails";
+import MyOrders from "../Pages/MyOrders";
 
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
         {
           path: 'categories/:categoryName',
           element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
+        },
+        {
+          path: 'my-orders',
+          element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
         },
         {
           path: 'terms-conditions',

@@ -1,5 +1,5 @@
 import { Rating } from '@smastrom/react-rating';
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
@@ -11,6 +11,12 @@ const ProductDetails = () => {
     const { _id, product_image, productName, description, price, category, rating, brand, total, minimumSell } = product;
     // const [totalQuantity, setTotalQuantity] = useState(total)
     const [orderQuantity, setOrderQuantity] = useState(1);
+    const [date, setDate] = useState();
+    useEffect(()=>{
+        const date = new Date()     // get the date
+        const formatedDate = date.toISOString().split('T')[0];
+        setDate(formatedDate)
+    },[])
 
     const handleDecrement = () => {
         if (orderQuantity > 1) setOrderQuantity(orderQuantity - 1)
@@ -31,12 +37,15 @@ const ProductDetails = () => {
         const form = e.target;
         const customer = form.customer.value;
         const customer_email = form.customer_email.value;
+        const buying_date = form.buying_date.value;
+        console
 
         const orderData = {
             orderId: _id,
             customer,
             customer_email,
             order_quantity,
+            buying_date
         }
         console.log(orderData)
         // save orderData to the database
@@ -84,12 +93,15 @@ const ProductDetails = () => {
                             <div className="">
                                 <form onSubmit={handleOrder} method="dialog">
                                     <label className=''>
-                                        <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} />
+                                        <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} readOnly />
                                     </label>
                                     <label className="input mb-3">
-                                        <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} />
+                                        <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} readOnly />
                                     </label>
-                                    <div className="validator-hint hidden">Enter valid email address</div>
+                                    {/* <div className="validator-hint hidden">Enter valid email address</div> */}
+                                    <label className=''>
+                                        <input type="date" className="input mb-3" name='buying_date' defaultValue={date} readOnly />
+                                    </label>
                                     <div className='flex items-center'>
                                         <button type='button' onClick={handleDecrement} disabled={orderQuantity === 1} className='btn btn-sm'>-</button>
                                         <input

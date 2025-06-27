@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import AuthContext from '../../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext)
@@ -53,6 +54,10 @@ const Navbar = () => {
                         {
                             user ?
                                 <div className='flex items-center gap-4'>
+                                    {/* <Link to={'/my-orders'}>My Orders</Link> */}
+                                    <Link to={'/my-orders'}>
+                                        <FaShoppingCart size={25}/>
+                                    </Link>
                                     <Link to={'/my-profile'}><img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /></Link>
                                     <a className='btn btn-soft btn-primary' onClick={handleSignOut}> Log Out </a>
                                 </div>
