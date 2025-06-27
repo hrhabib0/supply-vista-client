@@ -11,14 +11,14 @@ const Categories = ({ categories }) => {
                         categories.map(
                             category =>
                                 <Link to={`/categories/${category.name}`}>
-                                    <div className='border border-gray-300 rounded-3xl p-2 flex gap-4 items-center hover:text-blue-500 hover:scale-105 transition-transform duration-300'>
+                                    <div className='border border-gray-300 rounded-3xl p-2 flex gap-2 md:gap-4 items-center hover:text-blue-500 hover:scale-105 transition-transform duration-300'>
                                         <div className="avatar">
-                                            <div className="mask mask-hexagon-2 w-20">
-                                                <img src={category.image} />
+                                            <div className="mask mask-hexagon-2 w-16 md:w-20">
+                                                <img src={category.image} className="w-full"/>
                                             </div>
                                         </div>
                                         <div>
-                                            <h2 className="font-semibold">{category.name}</h2>
+                                            <h2 className="font-semibold text-sm md:text-lg">{category.name}</h2>
                                         </div>
                                     </div>
                                 </Link>

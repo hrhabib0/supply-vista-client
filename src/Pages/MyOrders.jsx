@@ -50,9 +50,8 @@ const MyOrders = () => {
     }
     return (
         <div>
-            all order is here: {orders.length}
-            <h1 className='text-4xl text-center font-bold py-5'>Your all products is here</h1>
-            <div className='grid gap-5 grid-cols-1 md:grid-cols-3'>
+            <h1 className='text-2xl md:text-4xl text-center font-bold py-5'>Your all products is here</h1>
+            <div className='grid gap-5 grid-cols-1 md:grid-cols-3 mx-3 lg:mx-0'>
                 {
                     orders.map(order => <OrderProductCard key={order._id} order={order} handleRemoveOrder={handleRemoveOrder}></OrderProductCard>)
                 }

@@ -10,7 +10,8 @@ const AllProducts = () => {
         setViewType(e.target.value)
     }
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
+            <h1 className='text-4xl text-center font-bold py-4'>Discover All Products</h1>
             <div className='flex justify-end mt-4'>
                 <select
                     className='select select-sm w-40'
@@ -22,7 +23,7 @@ const AllProducts = () => {
                 </select>
             </div>
             {viewType === 'card' && (
-                <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10'>
+                <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7 mx-3 md:mx-0'>
                     {
                         products.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
                     }
