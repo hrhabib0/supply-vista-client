@@ -15,9 +15,9 @@ const CategoryProductCard = ({ product }) => {
                         alt="Shoes"
                         className="w-full h-full object-cover" />
                 </figure>
-                <div className="card-body items-center bg-gray-400">
-                    <div className='flex'>
-                        <div className='flex-1'>
+                <div className="card-body p-2 lg:p-6 items-center bg-gray-400">
+                    <div className=''>
+                        <div>
                             <h2 className="card-title">{productName}</h2>
                             <p>{shortDescription}</p>
                             <div>
@@ -25,7 +25,7 @@ const CategoryProductCard = ({ product }) => {
                             </div>
                         </div>
                         <div className="divider divider-error lg:divider-horizontal"></div>
-                        <div className='flex-1'>
+                        <div>
                             <h2 className="card-title">Brand: {brand}</h2>
                             <p>Category: {category}</p>
                             <p>{price} BDT</p>

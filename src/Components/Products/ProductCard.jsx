@@ -16,8 +16,8 @@ const ProductCard = ({ product }) => {
                     className="object-cover" />
             </figure>
             <div className="card-body items-center bg-gray-400">
-                <div className='flex'>
-                    <div className='flex-1'>
+                <div>
+                    <div>
                         <h2 className="card-title">{productName}</h2>
                         <p>{shortDescription}</p>
                         <div>

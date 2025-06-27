@@ -16,8 +16,8 @@ const OrderProductCard = ({ order,handleRemoveOrder }) => {
                         className="object-cover" />
                 </figure>
                 <div className="card-body items-center bg-gray-400">
-                    <div className='flex'>
-                        <div className='flex-1'>
+                    <div>
+                        <div>
                             <h2 className="card-title">{productName}</h2>
                             <p>{description}</p>
                             <div>
@@ -25,7 +25,7 @@ const OrderProductCard = ({ order,handleRemoveOrder }) => {
                             </div>
                         </div>
                         <div className="divider divider-error lg:divider-horizontal"></div>
-                        <div className='flex-1'>
+                        <div>
                             <h2 className="card-title">Brand: {brand}</h2>
                             <p>Category: {category}</p>
                             <p>{price} BDT</p>
