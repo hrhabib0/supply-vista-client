@@ -14,7 +14,6 @@ const UpdateProduct = () => {
         // send update data to the backend
         axios.put(`https://b2b-market-server.vercel.app/products/${_id}`, updatedProduct)
             .then(res => {
-                // console.log("update prodcut", res.data)
                 if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",

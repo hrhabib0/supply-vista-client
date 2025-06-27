@@ -1,22 +1,24 @@
 import { Rating } from '@smastrom/react-rating';
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
+    // login user from auth context
     const { user } = use(AuthContext)
+    // load data by using loader
     const data = useLoaderData();
     const [product, setProduct] = useState(data)
     const { _id, product_image, productName, description, price, category, rating, brand, total, minimumSell } = product;
-    // const [totalQuantity, setTotalQuantity] = useState(total)
     const [orderQuantity, setOrderQuantity] = useState(1);
     const [date, setDate] = useState();
-    useEffect(()=>{
+    useEffect(() => {
         const date = new Date()     // get the date
         const formatedDate = date.toISOString().split('T')[0];
         setDate(formatedDate)
-    },[])
+    }, [])
 
     const handleDecrement = () => {
         if (orderQuantity > 1) setOrderQuantity(orderQuantity - 1)
@@ -24,22 +26,29 @@ const ProductDetails = () => {
     const handleIncrement = () => {
         setOrderQuantity(orderQuantity + 1)
     }
-
+    // for closing modal
+    const modalRef = useRef(null)
+    const handleCloseModal = () => {
+        modalRef.current.close()
+    }
     const handleOrder = (e) => {
         e.preventDefault();
         const order_quantity = orderQuantity;
-        if (order_quantity < minimumSell){
-            alert('Increase Quantity');
+        if (order_quantity < minimumSell) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Sorry!",
+                text: `Minimum sell quantity is ${minimumSell}. Please Increase your order.`,
+                showConfirmButton: false,
+                timer: 1500
+            });
             return;
         }
-        // const remainingStock = total - order;
-        // console.log('remaining ', remainingStock)
         const form = e.target;
         const customer = form.customer.value;
         const customer_email = form.customer_email.value;
         const buying_date = form.buying_date.value;
-        console
-
         const orderData = {
             orderId: _id,
             customer,
@@ -47,21 +56,20 @@ const ProductDetails = () => {
             order_quantity,
             buying_date
         }
-        console.log(orderData)
         // save orderData to the database
-        axios.post('http://localhost:3000/orders', orderData)
+        axios.post('https://b2b-market-server.vercel.app/orders', orderData)
             .then(res => {
                 if (res.data.insertedId) {
-                    document.getElementById('my_modal_1').close();
-                    setProduct(prev=>{
-                        return {...prev, total:prev.total-order_quantity}
+                    // document.getElementById('my_modal_1').close();
+                    handleCloseModal()
+                    setProduct(prev => {
+                        return { ...prev, total: prev.total - order_quantity }
                     })
                 }
             })
             .catch(error => {
-                console.log(error)
+                alert(error)
             })
-        // console.log('order quantity', order)
 
     }
 
@@ -86,12 +94,19 @@ const ProductDetails = () => {
                     </div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                     <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Buy Now</button>
-                    <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Fill up the form!</h3>
+                    <dialog ref={modalRef} id="my_modal_1" className="modal">
 
+                        <div className="modal-box">
+                            <div className='flex items-center justify-between'>
+                                <h3 className="font-bold text-lg">Fill up the form!</h3>
+                                <div className="modal-action">
+                                    <form method="dialog">
+                                        <button className="btn">X</button>
+                                    </form>
+                                </div>
+                            </div>
                             <div className="">
-                                <form onSubmit={handleOrder} method="dialog">
+                                <form onSubmit={handleOrder} method='dialog'>
                                     <label className=''>
                                         <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} readOnly />
                                     </label>
@@ -116,6 +131,7 @@ const ProductDetails = () => {
                                     {/* if there is a button in form, it will close the modal */}
                                     <button className="btn mt-3">Buy</button>
                                 </form>
+
                             </div>
                         </div>
                     </dialog>

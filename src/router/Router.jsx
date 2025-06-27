@@ -16,63 +16,65 @@ import TermsConditions from "../Pages/TermsConditions";
 import CategoryProducts from "../Pages/CategoryProducts";
 import ProductDetails from "../Pages/ProductDetails";
 import MyOrders from "../Pages/MyOrders";
+import Error from "../Pages/Error";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayouts,
-    children:[
-        {
-            index: true, Component: Home,
-        },
-        {
-          path: 'add-product',
-          element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
-        },
-        {
-          path: 'products',
-          element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-          loader: ()=>fetch('https://b2b-market-server.vercel.app/products').then(res=>res.json())
-        },
-        {
-          path: 'products/:id',
-          element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
-        },
-        {
-          path: 'update-product/:id',
-          element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-          loader: ({params}) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
-        },
-        {
-          path: 'categories/:categoryName',
-          element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
-        },
-        {
-          path: 'my-orders',
-          element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
-        },
-        {
-          path: 'terms-conditions',
-          Component: TermsConditions
-        },
-        {
-          path: 'privacy-policy',
-          Component: PrivacyPolicy
-        },
-        {
-          path: 'sign-in',
-          Component: SignIn,
-        },
-        {
-          path: 'register',
-          Component: Register,
-        },
-        {
-          path: 'my-profile',
-          element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
-        },
+    errorElement: <Error></Error>,
+    children: [
+      {
+        index: true, Component: Home,
+      },
+      {
+        path: 'add-product',
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+      },
+      {
+        path: 'products',
+        element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
+        loader: () => fetch('https://b2b-market-server.vercel.app/products').then(res => res.json())
+      },
+      {
+        path: 'products/:id',
+        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
+      },
+      {
+        path: 'update-product/:id',
+        element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
+      },
+      {
+        path: 'categories/:categoryName',
+        element: <PrivateRoute><CategoryProducts></CategoryProducts></PrivateRoute>
+      },
+      {
+        path: 'my-orders',
+        element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+      },
+      {
+        path: 'terms-conditions',
+        Component: TermsConditions
+      },
+      {
+        path: 'privacy-policy',
+        Component: PrivacyPolicy
+      },
+      {
+        path: 'sign-in',
+        Component: SignIn,
+      },
+      {
+        path: 'register',
+        Component: Register,
+      },
+      {
+        path: 'my-profile',
+        element: <PrivateRoute><MyProfile></MyProfile></PrivateRoute>
+      },
     ]
   },
 ]);

@@ -8,18 +8,16 @@ const MyOrders = () => {
     const { user } = use(AuthContext)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        axios(`http://localhost:3000/orders/?email=${user?.email}`)
+        axios(`https://b2b-market-server.vercel.app/orders/?email=${user?.email}`)
             .then(data => {
-                console.log(data.data)
                 setOrders(data.data)
             })
             .catch(error => {
-                console.log(error)
+                alert(error)
             })
     }, [user])
 
     const handleRemoveOrder = (id) => {
-        console.log('remove button ok', id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -31,9 +29,8 @@ const MyOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // fetch data to delete from database
-                axios.delete(`http://localhost:3000/orders/${id}`)
+                axios.delete(`https://b2b-market-server.vercel.app/orders/${id}`)
                     .then(res => {
-                        console.log(res.data)
                         if (res.data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -46,7 +43,7 @@ const MyOrders = () => {
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        alert(error)
                     })
             }
         });

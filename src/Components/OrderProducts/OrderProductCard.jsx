@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const OrderProductCard = ({ order,handleRemoveOrder }) => {
-    console.log(order)
     const { _id, productName, product_image, description, category, price, rating, brand, buying_date } = order;
 
     return (
