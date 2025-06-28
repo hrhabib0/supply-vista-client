@@ -24,7 +24,6 @@ const ProductDetails = () => {
         if (orderQuantity > 1) setOrderQuantity(orderQuantity - 1)
     }
     const handleIncrement = () => {
-        console.log('order quantitiy',typeof orderQuantity)
         const convertQuantity = parseInt(orderQuantity)
         setOrderQuantity(convertQuantity + 1)
     }
@@ -33,11 +32,9 @@ const ProductDetails = () => {
     const handleCloseModal = () => {
         modalRef.current.close()
     }
-    console.log("type of total",typeof total)
     const handleOrder = (e) => {
         e.preventDefault();
         const order_quantity = parseInt(orderQuantity);
-        console.log(typeof order_quantity)
         if (order_quantity < minimumSell) {
             Swal.fire({
                 position: "top-end",

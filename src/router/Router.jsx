@@ -20,8 +20,6 @@ import Error from "../Pages/Error";
 import MyAddProduct from "../Pages/MyAddProduct";
 import AllCategories from "../Pages/AllCategories";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",

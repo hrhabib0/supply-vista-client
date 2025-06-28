@@ -4,7 +4,6 @@ import { motion } from "motion/react"
 
 const AllCategories = () => {
     const categories = useLoaderData()
-    console.log(categories)
     return (
         <div className="bg-black/40">
             <div className="max-w-7xl mx-auto py-10 px-4 md:px-0">

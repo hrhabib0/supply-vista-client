@@ -3,22 +3,25 @@ import React, { use, useEffect, useState } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import OrderProductCard from '../Components/OrderProducts/OrderProductCard';
 import Swal from 'sweetalert2';
+import useOrderApi from '../api/useOrderApi';
 
 const MyOrders = () => {
     const { user } = use(AuthContext)
+    const {myOrdersApi} = useOrderApi()
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        axios(`https://b2b-market-server.vercel.app/orders/?email=${user?.email}`)
-            .then(data => {
-                setOrders(data.data)
-            })
-            .catch(error => {
-                alert(error)
-            })
-    }, [user])
+            const fetchData = async () => {
+                try {
+                    const data = await myOrdersApi(user.email);
+                    setOrders(data);
+                } catch (error) {
+                    console.log('fetch error', error)
+                }
+            }
+            fetchData();
+        }, [user.email])
 
     const handleRemoveOrder = (id) => {
-        console.log('remove id',id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
