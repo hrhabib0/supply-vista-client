@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
@@ -28,6 +28,10 @@ const UpdateProduct = () => {
                 alert(error)
             })
     }
+    // dynamic title
+    useEffect(() => {
+        document.title = "Update Product | SupplyVista";
+    }, [])
     return (
         <div className='my-10'>
             <h1 className='text-4xl font-bold my-4 text-center'>Update Product Informations</h1>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
@@ -13,17 +13,21 @@ const Banner = () => {
             <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
                 loop={true}
                 pagination={{
                     clickable: true,
                 }}
                 navigation={true}
-                modules={[Pagination, Navigation]}
+                modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper h-[400px]"
             >
                 <SwiperSlide>
                     <div>
-                        <img src={'https://i.ibb.co/tpNM4Mvj/t-shirt.png'}  alt="offer-one" className='w-full h-[400px]' />
+                        <img src={'https://i.ibb.co/tpNM4Mvj/t-shirt.png'} alt="offer-one" className='w-full h-[400px]' />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>

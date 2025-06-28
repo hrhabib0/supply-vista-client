@@ -65,6 +65,15 @@ const ProductDetails = () => {
                     setProduct(prev => {
                         return { ...prev, total: prev.total - order_quantity }
                     })
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Order Placed Successfully",
+                        text: `${user.displayName || 'User'} login successfully!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
                 }
             })
             .catch(error => {
@@ -72,7 +81,10 @@ const ProductDetails = () => {
             })
 
     }
-
+    // dynamic title
+    useEffect(() => {
+        document.title = `${productName} | SupplyVista`;
+    }, [productName])
     return (
         <div className='max-w-7xl mx-auto my-8 grid'>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center bg-base-100">

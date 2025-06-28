@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -34,6 +34,10 @@ const AddProduct = () => {
                 alert(error)
             })
     }
+    // dynamic title
+    useEffect(() => {
+        document.title = "AddProduct | SupplyVista";
+    }, [])
     return (
         <div className='my-10'>
             <h1 className='text-4xl font-bold my-4 text-center'>Add Your Product</h1>

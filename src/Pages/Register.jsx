@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
@@ -57,6 +57,10 @@ const Register = () => {
                 alert(error.message)
             })
     }
+    // dynamic title
+    useEffect(() => {
+        document.title = "Register | SupplyVista";
+    }, [])
     return (
 
         <div className="card bg-base-100 w-full max-w-md mx-auto mt-5 shrink-0 shadow-2xl">

@@ -38,7 +38,7 @@ const MyOrders = () => {
                                 icon: "success"
                             });
                             // filter remaining orders and update ui
-                            const remainingOrders = orders.filter(order=>order._id !==id);
+                            const remainingOrders = orders.filter(order => order._id !== id);
                             setOrders(remainingOrders)
                         }
                     })
@@ -48,6 +48,10 @@ const MyOrders = () => {
             }
         });
     }
+    // dynamic title
+    useEffect(() => {
+        document.title = "My Orders | SupplyVista";
+    }, [])
     return (
         <div>
             <h1 className='text-2xl md:text-4xl text-center font-bold py-5'>Your all products is here</h1>

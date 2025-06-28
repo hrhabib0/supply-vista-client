@@ -10,7 +10,7 @@ const Categories = ({ categories }) => {
                     {
                         categories.map(
                             category =>
-                                <Link to={`/categories/${category.name}`}>
+                                <Link key={category._id} to={`/categories/${category.name}`}>
                                     <div className='border border-gray-300 rounded-3xl p-2 flex gap-2 md:gap-4 items-center hover:text-blue-500 hover:scale-105 transition-transform duration-300'>
                                         <div className="avatar">
                                             <div className="mask mask-hexagon-2 w-16 md:w-20">

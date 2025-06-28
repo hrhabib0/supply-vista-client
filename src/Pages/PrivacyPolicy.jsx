@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const PrivacyPolicy = () => {
+    // dynamic title
+    useEffect(() => {
+        document.title = "Privacy & Policy | SupplyVista";
+    }, [])
     return (
         <div className='max-w-7xl mx-auto px-5 py-10'>
             <h1 className='text-3xl font-bold text-center mb-6'>প্রাইভেসি পলিসি (Privacy Policy)</h1>

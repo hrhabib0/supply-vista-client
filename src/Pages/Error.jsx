@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router';
 
 const Error = () => {
+    // dynamic title
+    useEffect(() => {
+        document.title = "404 | SupplyVista";
+    }, [])
     return (
         <div>
             <div>

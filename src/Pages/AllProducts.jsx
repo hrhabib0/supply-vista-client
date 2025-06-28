@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import ProductCard from '../Components/Products/ProductCard';
 import ProductRow from '../Components/Products/ProductRow';
@@ -9,6 +9,10 @@ const AllProducts = () => {
     const handleViewChange = (e) => {
         setViewType(e.target.value)
     }
+    // dynamic title
+    useEffect(() => {
+        document.title = "All Products | SupplyVista";
+    }, [])
     return (
         <div className='max-w-7xl mx-auto'>
             <h1 className='text-4xl text-center font-bold py-4'>Discover All Products</h1>
@@ -50,7 +54,7 @@ const AllProducts = () => {
                         <tbody>
                             {/* row 1 */}
                             {
-                                products.map((product,index)=><ProductRow index={index} product={product}></ProductRow>)
+                                products.map((product, index) => <ProductRow index={index} product={product}></ProductRow>)
                             }
                         </tbody>
                     </table>

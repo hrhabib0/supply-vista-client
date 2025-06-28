@@ -23,7 +23,7 @@ const Footer = () => {
                         at your service since 2025
                     </p>
                 </div>
-                <nav>
+                <nav className='list-none'>
                     <h6 className="footer-title">Quick Links</h6>
                     <li><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/add-product'}>Add Product</Link></li>

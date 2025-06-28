@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const TermsConditions = () => {
+     // dynamic title
+        useEffect(() => {
+            document.title = "Terms & Conditions | SupplyVista";
+        }, [])
     return (
         <div className='max-w-7xl mx-auto px-5 py-10'>
             <h1 className='text-3xl font-bold text-center mb-6'>ব্যবহার শর্তাবলী (Terms and Conditions)</h1>
