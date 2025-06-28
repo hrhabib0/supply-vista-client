@@ -18,6 +18,8 @@ import ProductDetails from "../Pages/ProductDetails";
 import MyOrders from "../Pages/MyOrders";
 import Error from "../Pages/Error";
 import MyAddProduct from "../Pages/MyAddProduct";
+import AllCategories from "../Pages/AllCategories";
+
 
 
 const router = createBrowserRouter([
@@ -37,6 +39,11 @@ const router = createBrowserRouter([
         path: 'products',
         element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
         loader: () => fetch('https://b2b-market-server.vercel.app/products').then(res => res.json())
+      },
+      {
+        path: 'categories',
+        Component: AllCategories,
+        loader: ()=>fetch('https://b2b-market-server.vercel.app/categories').then(res=>res.json())
       },
       {
         path: 'my-product',
