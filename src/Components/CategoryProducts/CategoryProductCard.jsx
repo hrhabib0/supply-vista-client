@@ -7,7 +7,6 @@ const CategoryProductCard = ({ product }) => {
     const shortDescription = description.slice(0, 100) + '...';
     return (
         <div>
-            
             <div className="card bg-base-100 shadow-sm">
                 <figure className="h-72">
                     <img

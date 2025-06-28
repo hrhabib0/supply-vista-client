@@ -9,8 +9,9 @@ const Navbar = () => {
     const links =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
-            <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
             <li><NavLink to={'/products'}>All Products</NavLink></li>
+            <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
+            <li><NavLink to={'/my-product'}>My Product</NavLink></li>
         </>
     const handleSignOut = () => {
         signOutUser()
@@ -56,7 +57,7 @@ const Navbar = () => {
                                 <div className='flex items-center gap-4'>
                                     {/* <Link to={'/my-orders'}>My Orders</Link> */}
                                     <Link to={'/my-orders'}>
-                                        <FaShoppingCart size={25}/>
+                                        <FaShoppingCart size={25} />
                                     </Link>
                                     <Link to={'/my-profile'}><img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /></Link>
                                     <a className='btn btn-soft btn-primary' onClick={handleSignOut}> Log Out </a>

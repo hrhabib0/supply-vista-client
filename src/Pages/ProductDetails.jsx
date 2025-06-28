@@ -24,22 +24,37 @@ const ProductDetails = () => {
         if (orderQuantity > 1) setOrderQuantity(orderQuantity - 1)
     }
     const handleIncrement = () => {
-        setOrderQuantity(orderQuantity + 1)
+        console.log('order quantitiy',typeof orderQuantity)
+        const convertQuantity = parseInt(orderQuantity)
+        setOrderQuantity(convertQuantity + 1)
     }
     // for closing modal
     const modalRef = useRef(null)
     const handleCloseModal = () => {
         modalRef.current.close()
     }
+    console.log("type of total",typeof total)
     const handleOrder = (e) => {
         e.preventDefault();
-        const order_quantity = orderQuantity;
+        const order_quantity = parseInt(orderQuantity);
+        console.log(typeof order_quantity)
         if (order_quantity < minimumSell) {
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: "Sorry!",
                 text: `Minimum sell quantity is ${minimumSell}. Please Increase your order.`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+            return;
+        }
+        if (order_quantity > total) {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Sorry!",
+                text: `Available stcok is ${total}.`,
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -73,7 +88,7 @@ const ProductDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-
+                    setOrderQuantity(1)
                 }
             })
             .catch(error => {
@@ -120,14 +135,14 @@ const ProductDetails = () => {
                             <div className="">
                                 <form onSubmit={handleOrder} method='dialog'>
                                     <label className=''>
-                                        <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} readOnly />
+                                        <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} readOnly disabled />
                                     </label>
                                     <label className="input mb-3">
-                                        <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} readOnly />
+                                        <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} readOnly disabled />
                                     </label>
                                     {/* <div className="validator-hint hidden">Enter valid email address</div> */}
                                     <label className=''>
-                                        <input type="date" className="input mb-3" name='buying_date' defaultValue={date} readOnly />
+                                        <input type="date" className="input mb-3" name='buying_date' defaultValue={date} readOnly disabled />
                                     </label>
                                     <div className='flex items-center'>
                                         <button type='button' onClick={handleDecrement} disabled={orderQuantity === 1} className='btn btn-sm'>-</button>

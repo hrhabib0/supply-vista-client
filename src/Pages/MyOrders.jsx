@@ -18,6 +18,7 @@ const MyOrders = () => {
     }, [user])
 
     const handleRemoveOrder = (id) => {
+        console.log('remove id',id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -43,7 +44,7 @@ const MyOrders = () => {
                         }
                     })
                     .catch(error => {
-                        alert(error)
+                        console.log(error)
                     })
             }
         });
