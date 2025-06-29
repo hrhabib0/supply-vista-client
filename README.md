@@ -1,12 +1,53 @@
-# React + Vite
+# 📦 SupplyVista – Global B2B Wholesale Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SupplyVista is a full-stack B2B wholesale marketplace platform connecting bulk product suppliers (manufacturers, distributors) with global retailers, resellers, and institutional buyers. The application supports multi-category listings, secure user authentication, and interactive product browsing features.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Website
 
-## Expanding the ESLint configuration
+🔗 [Visit SupplyVista Live](https://supply-vista.web.app)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎯 Project Purpose
+
+To build a global-scale B2B marketplace where suppliers can add bulk products under various categories, and buyers can explore, filter, and request details of products in a secure, responsive environment.
+
+---
+
+## ✨ Key Features
+
+- 🔐 **User Authentication** (Firebase)
+- 📂 **Multi-Category Product Listings**
+- 📦 **Bulk Order Management**
+- ⭐ **Product Ratings**
+- 🔍 **Filter by Category**
+- 🖼️ **Swiper-based Banners**
+- 🧾 **Product Details Pages**
+- 🛡️ **Protected Routes**
+- 📱 **Fully Responsive Design**
+
+---
+
+## 🧩 Tech Stack
+
+### 🖥️ Frontend
+- **React.js**
+- **Tailwind CSS**
+- **DaisyUI**
+- **Framer Motion**
+- **React Router DOM**
+- **React Icons**
+- **Axios**
+- **SwiperJS**
+- **Firebase (Authentication)**
+
+### ⚙️ Backend
+- **Express.js**
+- **MongoDB**
+- **Cors**
+- **Dotenv**
+- **JWT (optional for secure API access)**
+
+---
