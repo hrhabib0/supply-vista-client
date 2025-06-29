@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router';
 import AuthContext from '../../contexts/AuthContext/AuthContext';
 import Swal from 'sweetalert2';
 import { FaShoppingCart } from 'react-icons/fa';
+import './navbar.css'
 
 const Navbar = () => {
     const { user, signOutUser } = use(AuthContext)
