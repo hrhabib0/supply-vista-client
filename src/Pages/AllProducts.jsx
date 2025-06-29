@@ -59,7 +59,7 @@ const AllProducts = () => {
                 </div>
                 <div className='flex justify-end mt-4'>
                     <select
-                        className='select select-sm w-40'
+                        className='select select-sm w-30'
                         value={viewType}
                         onChange={handleViewChange}
                     >
