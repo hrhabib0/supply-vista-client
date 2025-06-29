@@ -28,7 +28,7 @@ const AllProducts = () => {
                 const data = await axiosSecure.get('/products').then(res => res.data);
                 setProducts(data);
             } catch (error) {
-                console.log('fetch error', error)
+                alert('fetch error', error)
             }
         }
         fetchData();
@@ -45,10 +45,10 @@ const AllProducts = () => {
     const [showAvailable, setShowAvailabe] = useState(false)
     const filterProducts = showAvailable ?
         products.filter(product => product.minimumSell > 100) : products;
-    console.log(filterProducts)
+
     return (
-        <div className='max-w-7xl mx-auto'>
-            <h1 className='text-4xl text-center font-bold py-4'>Discover All Products</h1>
+        <div className='max-w-7xl mx-auto my-10 px-4 lg:px-0'>
+            <h1 className='text-3xl md:text-4xl text-center font-bold pb-4'>Discover All Products</h1>
             <div className='flex justify-between'>
                 <div className='flex justify-start mt-4'>
                     <button onClick={() => setShowAvailabe(!showAvailable)} className='btn'>
@@ -69,7 +69,7 @@ const AllProducts = () => {
                 </div>
             </div>
             {viewType === 'card' && (
-                <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7 mx-3 md:mx-0'>
+                <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-7'>
                     {
                         filterProducts.map(product => <ProductCard key={product._id} product={product}></ProductCard>)
                     }

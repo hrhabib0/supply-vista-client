@@ -14,9 +14,8 @@ const MyOrders = () => {
                 try {
                     const data = await axiosSecure.get(`/orders/?email=${user.email}`).then(res=>res.data)
                     setOrders(data);
-                    console.log(data)
                 } catch (error) {
-                    console.log('fetch error', error)
+                    alert('fetch error', error)
                 }
             }
             fetchData();
@@ -48,7 +47,7 @@ const MyOrders = () => {
                         }
                     })
                     .catch(error => {
-                        console.log(error)
+                        alert(error)
                     })
             }
         });

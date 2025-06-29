@@ -99,7 +99,7 @@ const ProductDetails = () => {
     }, [productName])
     return (
         <div className='max-w-7xl mx-auto my-8 grid'>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center bg-base-100">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center bg-base-100">
                 <figure>
                     <img
                         src={product_image}

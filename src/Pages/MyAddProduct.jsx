@@ -13,7 +13,7 @@ const MyAddProduct = () => {
                 const data = await axiosSecure.get(`/products/?email=${user.email}`).then(res=>res.data);
                 setMyProduct(data);
             } catch (error) {
-                console.log('fetch error', error)
+                alert('fetch error', error)
             }
         }
         fetchData();

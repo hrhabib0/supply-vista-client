@@ -14,9 +14,8 @@ const CategoryProducts = () => {
             try {
                 const data = await axiosSecure.get(`/products/?category=${encodeURIComponent(categoryName)}`).then(res=>res.data)
                 setCategoryProduct(data);
-                console.log(data)
             } catch (error) {
-                console.log('fetch error', error)
+                alert('fetch error', error)
             }
         }
         fetchData();
