@@ -69,7 +69,7 @@ const ProductDetails = () => {
             buying_date
         }
         // save orderData to the database
-        axios.post('https://b2b-market-server.vercel.app/orders', orderData)
+        axios.post('http://localhost:3000/orders', orderData)
             .then(res => {
                 if (res.data.insertedId) {
                     // document.getElementById('my_modal_1').close();

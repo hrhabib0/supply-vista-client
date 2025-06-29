@@ -1,10 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+// import { useLoaderData } from 'react-router';
 import ProductCard from '../Components/Products/ProductCard';
 import ProductRow from '../Components/Products/ProductRow';
+import AuthContext from '../contexts/AuthContext/AuthContext';
+import useAxiosSecure from '../customHooks/useAxiosSecure';
 
 const AllProducts = () => {
-    const products = useLoaderData()
+    const axiosSecure = useAxiosSecure();
+    const [products, setProducts] = useState([])
+    // useEffect(() => {
+    //     axios(`http://localhost:3000/products`, {
+    //         headers: {
+    //             Authorization: `Bearer ${user.accessToken}`
+    //         }
+    //     })
+    //         .then(data => {
+    //             setProducts(data.data)
+    //             console.log(data.data)
+    //         })
+    //         .catch(error => {
+    //             alert(error)
+    //         })
+    // }, [user])
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await axiosSecure.get('/products').then(res=>res.data);
+                setProducts(data);
+            } catch (error) {
+                console.log('fetch error', error)
+            }
+        }
+        fetchData();
+    }, [axiosSecure])
     const [viewType, setViewType] = useState('card')
     const handleViewChange = (e) => {
         setViewType(e.target.value)

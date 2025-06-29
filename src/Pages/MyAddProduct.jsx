@@ -1,42 +1,25 @@
-import axios from 'axios';
 import React, { use, useEffect, useState } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import CategoryProductCard from '../Components/CategoryProducts/CategoryProductCard';
-import useApplicationApi from '../api/useApplicationApi';
+import useAxiosSecure from '../customHooks/useAxiosSecure';
 
 const MyAddProduct = () => {
     const { user } = use(AuthContext)
-    const { myProductsApi } = useApplicationApi()
+    const axiosSecure = useAxiosSecure();
     const [myProducts, setMyProduct] = useState([])
-    // one way to implement jwt
-    // useEffect(() => {
-    //     axios(`https://b2b-market-server.vercel.app/products/?email=${user?.email}`, {
-    //         headers: {
-    //             Authorization: `Bearer ${user.accessToken}`
-    //         }
-    //     })
-    //         .then(data => {
-    //             setMyProduct(data.data)
-    //             console.log(data.data)
-    //         })
-    //         .catch(error => {
-    //             alert(error)
-    //         })
-    // }, [user])
-    // another way to implement jwt
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await myProductsApi(user.email);
+                const data = await axiosSecure.get(`/products/?email=${user.email}`).then(res=>res.data);
                 setMyProduct(data);
             } catch (error) {
                 console.log('fetch error', error)
             }
         }
         fetchData();
-    }, [user.email])
+    }, [axiosSecure, user.email])
     return (
-        <div className='my-10'>
+        <div className='max-w-7xl mx-auto my-10 px-4 lg:px-0'>
             <h1 className='text-2xl md:text-4xl font-bold text-center pb-5'>Our Branded Products</h1>
             <div>
                 {

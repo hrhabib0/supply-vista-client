@@ -3,23 +3,24 @@ import React, { use, useEffect, useState } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import OrderProductCard from '../Components/OrderProducts/OrderProductCard';
 import Swal from 'sweetalert2';
-import useOrderApi from '../api/useOrderApi';
+import useAxiosSecure from '../customHooks/useAxiosSecure';
 
 const MyOrders = () => {
     const { user } = use(AuthContext)
-    const {myOrdersApi} = useOrderApi()
+    const axiosSecure = useAxiosSecure();
     const [orders, setOrders] = useState([])
     useEffect(() => {
             const fetchData = async () => {
                 try {
-                    const data = await myOrdersApi(user.email);
+                    const data = await axiosSecure.get(`/orders/?email=${user.email}`).then(res=>res.data)
                     setOrders(data);
+                    console.log(data)
                 } catch (error) {
                     console.log('fetch error', error)
                 }
             }
             fetchData();
-        }, [user.email])
+        }, [user.email, axiosSecure])
 
     const handleRemoveOrder = (id) => {
         Swal.fire({
@@ -33,7 +34,7 @@ const MyOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // fetch data to delete from database
-                axios.delete(`https://b2b-market-server.vercel.app/orders/${id}`)
+                axios.delete(`http://localhost:3000/orders/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
@@ -57,8 +58,8 @@ const MyOrders = () => {
         document.title = "My Orders | SupplyVista";
     }, [])
     return (
-        <div>
-            <h1 className='text-2xl md:text-4xl text-center font-bold py-5'>Your all products is here</h1>
+        <div className='max-w-7xl mx-auto my-10 px-4 lg:px-0'>
+            <h1 className='text-2xl md:text-4xl text-center font-bold pb-5'>Your all products is here</h1>
             <div className='grid gap-5 grid-cols-1 md:grid-cols-3 mx-3 lg:mx-0'>
                 {
                     orders.map(order => <OrderProductCard key={order._id} order={order} handleRemoveOrder={handleRemoveOrder}></OrderProductCard>)

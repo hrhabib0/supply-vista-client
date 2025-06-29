@@ -7,7 +7,7 @@ import Reviews from '../Components/Home/Reviews';
 const Home = () => {
     const [categories, setCategories] = useState([])
     useEffect(()=>{
-        fetch('https://b2b-market-server.vercel.app/categories')
+        fetch('http://localhost:3000/categories')
         .then(res=>res.json())
         .then(data=>setCategories(data))
     },[categories])

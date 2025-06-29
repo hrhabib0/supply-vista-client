@@ -6,7 +6,7 @@ const AllCategories = () => {
     const categories = useLoaderData()
     return (
         <div className="bg-black/40">
-            <div className="max-w-7xl mx-auto py-10 px-4 md:px-0">
+            <div className="max-w-7xl mx-auto py-10 px-4 lg:px-0">
                 <h1 className="py-5 text-center font-bold text-4xl">Discover All Categories</h1>
                 <div className='grid gap-5 grid-cols-2 md:grid-cols-4'>
                     {

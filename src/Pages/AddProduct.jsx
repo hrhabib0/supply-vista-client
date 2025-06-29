@@ -16,7 +16,7 @@ const AddProduct = () => {
         data.rating = Number(data.rating)
 
         // send data to the database
-        axios.post('https://b2b-market-server.vercel.app/products', data)
+        axios.post('http://localhost:3000/products', data)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

@@ -5,6 +5,7 @@ const Reviews = () => {
     return (
         <div className='bg-blue-500/50'>
             <div className='max-w-7xl mx-auto py-10'>
+                <h1 className="pb-5 text-center font-semibold text-2xl md:text-3xl">Our Satisfied Customer Reviews</h1>
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={30}
@@ -19,7 +20,7 @@ const Reviews = () => {
                 >
                     <SwiperSlide>
                         <div className='md:flex gap-5 w-2/3 mx-auto items-center justify-center'>
-                            <div className='w-60 h-40 mx-auto rounded-full bg-red-500 p-2'>
+                            <div className='w-36 h-28 mx-auto rounded-full bg-white p-1'>
                                 <img src={'https://i.ibb.co/dJ6KFfN8/lawyers5.jpg'} alt="" className='w-full h-full rounded-full' />
                             </div>
                             <div className='mt-5 md:mt-0'>
@@ -31,7 +32,7 @@ const Reviews = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className='md:flex gap-5 w-2/3 mx-auto items-center justify-center'>
-                            <div className='w-60 h-40 mx-auto rounded-full bg-red-500 p-2'>
+                            <div className='w-36 h-28 mx-auto rounded-full bg-white p-1'>
                                 <img src={'https://i.ibb.co/dJ6KFfN8/lawyers5.jpg'} alt="" className='w-full h-full rounded-full' />
                             </div>
                             <div className='mt-5 md:mt-0'>
@@ -43,7 +44,7 @@ const Reviews = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className='md:flex gap-5 w-2/3 mx-auto items-center justify-center'>
-                            <div className='w-60 h-40 mx-auto rounded-full bg-red-500 p-2'>
+                            <div className='w-36 h-28 mx-auto rounded-full bg-white p-1'>
                                 <img src={'https://i.ibb.co/dJ6KFfN8/lawyers5.jpg'} alt="" className='w-full h-full rounded-full' />
                             </div>
                             <div className='mt-5 md:mt-0'>
@@ -55,7 +56,7 @@ const Reviews = () => {
                     </SwiperSlide>
                     <SwiperSlide>
                         <div className='md:flex gap-5 w-2/3 mx-auto items-center justify-center'>
-                            <div className='w-60 h-40 mx-auto rounded-full bg-red-500 p-2'>
+                            <div className='w-36 h-28 mx-auto rounded-full bg-white p-1'>
                                 <img src={'https://i.ibb.co/dJ6KFfN8/lawyers5.jpg'} alt="" className='w-full h-full rounded-full' />
                             </div>
                             <div className='mt-5 md:mt-0'>
