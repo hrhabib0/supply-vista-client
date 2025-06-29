@@ -9,7 +9,7 @@ const AllProducts = () => {
     const axiosSecure = useAxiosSecure();
     const [products, setProducts] = useState([])
     // useEffect(() => {
-    //     axios(`http://localhost:3000/products`, {
+    //     axios(`https://b2b-market-server.vercel.app/products`, {
     //         headers: {
     //             Authorization: `Bearer ${user.accessToken}`
     //         }

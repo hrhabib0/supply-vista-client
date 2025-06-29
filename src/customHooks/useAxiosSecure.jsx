@@ -3,7 +3,7 @@ import React, { use } from 'react';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: 'https://b2b-market-server.vercel.app'
 })
 const useAxiosSecure = () => {
     const {user} = use(AuthContext);

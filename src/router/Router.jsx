@@ -36,27 +36,25 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
-        // loader: () => fetch('http://localhost:3000/products').then(res => res.json())
       },
       {
         path: 'categories',
         Component: AllCategories,
-        loader: ()=>fetch('http://localhost:3000/categories').then(res=>res.json())
+        loader: () => fetch('https://b2b-market-server.vercel.app/categories').then(res => res.json())
       },
       {
         path: 'my-product',
         element: <PrivateRoute><MyAddProduct></MyAddProduct></PrivateRoute>,
-        // loader: () => fetch('http://localhost:3000/products').then(res => res.json())
       },
       {
         path: 'products/:id',
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
       },
       {
         path: 'update-product/:id',
         element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:3000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
       },
       {
         path: 'categories/:categoryName',

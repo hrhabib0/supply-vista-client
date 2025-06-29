@@ -34,7 +34,7 @@ const MyOrders = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // fetch data to delete from database
-                axios.delete(`http://localhost:3000/orders/${id}`)
+                axios.delete(`https://b2b-market-server.vercel.app/orders/${id}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire({
