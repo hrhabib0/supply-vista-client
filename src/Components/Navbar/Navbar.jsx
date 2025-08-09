@@ -9,11 +9,16 @@ const Navbar = () => {
     const { user, signOutUser } = use(AuthContext)
     const links =
         <>
-            <li><NavLink to={'/'}>Home</NavLink></li>
-            <li><NavLink to={'/categories'}>Categories</NavLink></li>
-            <li><NavLink to={'/products'}>All Products</NavLink></li>
-            <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
-            <li><NavLink to={'/my-product'}>My Product</NavLink></li>
+            <li className='text-white'><NavLink to={'/'}>Home</NavLink></li>
+            <li className='text-white'><NavLink to={'/categories'}>Categories</NavLink></li>
+            <li className='text-white'><NavLink to={'/products'}>All Products</NavLink></li>
+
+            {
+                user && <>
+                    <li className='text-white'><NavLink to={'/add-product'}>Add Product</NavLink></li>
+                    <li className='text-white'><NavLink to={'/my-product'}>My Product</NavLink></li>
+                </>
+            }
         </>
     const handleSignOut = () => {
         signOutUser()
@@ -31,7 +36,7 @@ const Navbar = () => {
             })
     }
     return (
-        <div className='bg-[#1D4ED8]'>
+        <div className='bg-[#1D4ED8] sticky top-0 z-50'>
             <div className="navbar max-w-7xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -44,7 +49,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <Link to={'/'} className="text-xl">Supply<span>Vista</span></Link>
+                    <Link to={'/'} className="text-xl text-white font-bold">Supply<span>Vista</span></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -57,7 +62,6 @@ const Navbar = () => {
                         {
                             user ?
                                 <div className='flex items-center gap-4'>
-                                    {/* <Link to={'/my-orders'}>My Orders</Link> */}
                                     <Link to={'/my-orders'}>
                                         <FaShoppingCart size={25} />
                                     </Link>
@@ -66,8 +70,8 @@ const Navbar = () => {
                                 </div>
                                 :
                                 <>
-                                    <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
-                                    <Link to={'/register'} className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link>
+                                    <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#2563EB] text-white hover:bg-white hover:text-[#2563EB]'>LogIn</Link>
+                                    <Link to={'/register'} className='btn btn-sm border border-[#2563EB] bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white'>Register</Link>
                                 </>
                         }
                         {/* <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>

@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products',
-        element: <PrivateRoute><AllProducts></AllProducts></PrivateRoute>,
+        element: <AllProducts></AllProducts>,
       },
       {
         path: 'categories',
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'products/:id',
-        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
+        element: <ProductDetails></ProductDetails>,
         loader: ({ params }) => fetch(`https://b2b-market-server.vercel.app/products/${params.id}`)
       },
       {

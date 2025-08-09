@@ -10,7 +10,7 @@ const Home = () => {
         fetch('https://b2b-market-server.vercel.app/categories')
         .then(res=>res.json())
         .then(data=>setCategories(data))
-    },[categories])
+    },[])
     // dynamic title
     useEffect(()=>{
         document.title = "Home | SupplyVista";

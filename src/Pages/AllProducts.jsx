@@ -4,6 +4,7 @@ import ProductCard from '../Components/Products/ProductCard';
 import ProductRow from '../Components/Products/ProductRow';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import useAxiosSecure from '../customHooks/useAxiosSecure';
+import axios from 'axios';
 
 const AllProducts = () => {
     const axiosSecure = useAxiosSecure();
@@ -25,10 +26,11 @@ const AllProducts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await axiosSecure.get('/products').then(res => res.data);
+                const data = await axios.get('https://b2b-market-server.vercel.app/products').then(res => res.data);
                 setProducts(data);
             } catch (error) {
                 alert('fetch error', error)
+                console.log(error)
             }
         }
         fetchData();
