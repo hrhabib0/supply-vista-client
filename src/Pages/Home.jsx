@@ -3,6 +3,7 @@ import Banner from '../Components/Home/Banner';
 import Categories from '../Components/Home/Categories';
 import About from '../Components/Home/About';
 import Reviews from '../Components/Home/Reviews';
+import ContactUs from '../Components/Home/ContactUs';
 
 const Home = () => {
     const [categories, setCategories] = useState([])
@@ -21,6 +22,7 @@ const Home = () => {
             <Categories categories={categories}></Categories>
             <Reviews></Reviews>
             <About></About>
+            <ContactUs></ContactUs>
         </div>
     );
 };
