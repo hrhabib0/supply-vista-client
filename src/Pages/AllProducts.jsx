@@ -99,7 +99,7 @@ const AllProducts = () => {
                             <tbody>
                                 {/* row 1 */}
                                 {
-                                    filterProducts.map((product, index) => <ProductRow index={index} product={product}></ProductRow>)
+                                    filterProducts.map((product, index) => <ProductRow key={index} index={index} product={product}></ProductRow>)
                                 }
                             </tbody>
                         </table>

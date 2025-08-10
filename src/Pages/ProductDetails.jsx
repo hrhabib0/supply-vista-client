@@ -112,12 +112,12 @@ const ProductDetails = () => {
                     <p className=''>TK {price}</p>
                     <p className=''>Total Stock: {total}</p>
                     <p className='text-2xl font-thin'>Brand: <span className='text-blue-500'>{brand}</span></p>
-                    <p className='text-2xl font-thin'>Category: <span className='text-green-500'>{category}</span></p>
+                    <p className='text-2xl font-thin'>Category: <span className='text-[#2563EB]'>{category}</span></p>
                     <div>
                         <Rating style={{ maxWidth: 150 }} value={rating} readOnly></Rating>
                     </div>
                     {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Buy Now</button>
+                    <button className="btn bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white transition duration-500" onClick={() => document.getElementById('my_modal_1').showModal()}>Buy Now</button>
                     <dialog ref={modalRef} id="my_modal_1" className="modal">
 
                         <div className="modal-box">
@@ -153,7 +153,7 @@ const ProductDetails = () => {
                                         <button type='button' onClick={handleIncrement} className='btn btn-sm'>+</button>
                                     </div>
                                     {/* if there is a button in form, it will close the modal */}
-                                    <button className="btn mt-3">Buy</button>
+                                    <button className="btn mt-3 bg-[#2563EB] text-white">Buy</button>
                                 </form>
 
                             </div>
