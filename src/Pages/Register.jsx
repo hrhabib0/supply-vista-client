@@ -64,7 +64,7 @@ const Register = () => {
     return (
 
         <div className="card bg-base-100 w-full max-w-md mx-auto mt-5 shrink-0 shadow-2xl">
-            <h1 className="text-5xl font-bold text-center">Register now!</h1>
+            <h1 className="text-5xl font-bold text-center text-[#2563EB]">Register now!</h1>
             <div className="card-body">
                 <form onSubmit={handleRegisterUser}>
                     <fieldset className="fieldset">
@@ -100,7 +100,7 @@ const Register = () => {
                     </button>
                 </div>
                 <div>
-                    <h1 className='text-xl'>Already have an account? <Link to={'/sign-in'} className='text-red-500'> Sign In </Link></h1>
+                    <h1 className='text-xl'>Already have an account? <Link to={'/sign-in'} className='text-blue-500'> Sign In </Link></h1>
                 </div>
             </div>
         </div>

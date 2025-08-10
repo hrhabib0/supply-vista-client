@@ -56,7 +56,7 @@ const SignIn = () => {
     }, [])
     return (
         <div className="card bg-base-100 w-full max-w-md mx-auto mt-5 shrink-0 shadow-2xl">
-            <h1 className="text-5xl font-bold text-center">Login now!</h1>
+            <h1 className="text-5xl font-bold text-center text-[#2563EB]">Login now!</h1>
             <div className="card-body">
                 <form onSubmit={handleSignInUser}>
                     <fieldset className="fieldset">
@@ -65,7 +65,7 @@ const SignIn = () => {
                         <label className="label">Password</label>
                         <input type="password" className="input w-full" name='password' placeholder="Password" required />
                         <div><a className="link link-hover">Forgot password?</a></div>
-                        <input type="submit" className='btn btn-neutral mt-4' value="Sign In" />
+                        <input type="submit" className='btn bg-[#2563EB] text-white mt-4' value="Sign In" />
                         {/* <button className="btn btn-neutral mt-4">Login</button> */}
                     </fieldset>
                 </form>
@@ -79,7 +79,7 @@ const SignIn = () => {
                     </button>
                 </div>
                 <div>
-                    <h1 className='text-xl'>Don't have an account? <Link to={'/register'} className='text-red-500'> Register</Link></h1>
+                    <h1 className='text-xl'>Don't have an account? <Link to={'/register'} className='text-blue-500'> Register</Link></h1>
                 </div>
             </div>
         </div>
