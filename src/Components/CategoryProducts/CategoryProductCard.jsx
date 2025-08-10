@@ -14,7 +14,7 @@ const CategoryProductCard = ({ product }) => {
                         alt="Shoes"
                         className="w-full h-full object-cover" />
                 </figure>
-                <div className="card-body p-2 lg:p-6 items-center bg-gray-400">
+                <div className="card-body p-2 lg:p-6 items-center bg-[#2563EB] text-white">
                     <div className=''>
                         <div>
                             <h2 className="card-title">{productName}</h2>
@@ -31,7 +31,7 @@ const CategoryProductCard = ({ product }) => {
                         </div>
                     </div>
                     <div className="card-actions">
-                        <Link to={`/products/${_id}`} className="btn btn-primary">View Details</Link>
+                        <Link to={`/products/${_id}`} className="btn border-none bg-white text-[#2563EB]">View Details</Link>
                     </div>
                 </div>
             </div>

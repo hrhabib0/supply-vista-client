@@ -63,10 +63,10 @@ const Navbar = () => {
                             user ?
                                 <div className='flex items-center gap-4'>
                                     <Link to={'/my-orders'}>
-                                        <FaShoppingCart size={25} />
+                                        <FaShoppingCart size={25} className='text-white'/>
                                     </Link>
                                     <Link to={'/my-profile'}><img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /></Link>
-                                    <a className='btn btn-soft btn-primary' onClick={handleSignOut}> Log Out </a>
+                                    <a className='btn bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white' onClick={handleSignOut}> Log Out </a>
                                 </div>
                                 :
                                 <>
@@ -74,8 +74,6 @@ const Navbar = () => {
                                     <Link to={'/register'} className='btn btn-sm border border-[#2563EB] bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white'>Register</Link>
                                 </>
                         }
-                        {/* <Link to={'/sign-in'} className='mr-5 btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>LogIn</Link>
-                    <Link to={'/register'} className='btn btn-sm border-none bg-[#F97316] hover:bg-[#f97416cc]'>Register</Link> */}
                     </div>
                 </div>
             </div>
