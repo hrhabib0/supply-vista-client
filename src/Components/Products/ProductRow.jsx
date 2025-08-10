@@ -29,7 +29,7 @@ const ProductRow = ({product,index}) => {
             <td>{price}</td>
             <td><Rating style={{ maxWidth: 150 }} value={rating} readOnly></Rating></td>
             <th>
-                <Link to={`/update-product/${_id}`} className="btn btn-primary">Update Product</Link>
+                <Link to={`/update-product/${_id}`} className="btn bg-[#2563EB] text-white">Update Product</Link>
             </th>
         </tr>
     );

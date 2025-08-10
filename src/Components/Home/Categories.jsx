@@ -5,7 +5,7 @@ const Categories = ({ categories }) => {
     return (
         <div className="bg-gradient-to-r from-gray-50 to-blue-50">
             <div className="max-w-7xl mx-auto py-10 px-4 lg:px-0">
-                <h1 className="text-blue-600 text-center font-bold text-4xl pb-5">Discover All Categories</h1>
+                <h1 className="text-[#2563EB] text-center font-bold text-4xl pb-5">Discover All Categories</h1>
                 <div className='grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
                     {
                         categories.map(
