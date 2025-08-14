@@ -4,6 +4,7 @@ import Categories from '../Components/Home/Categories';
 import About from '../Components/Home/About';
 import Reviews from '../Components/Home/Reviews';
 import ContactUs from '../Components/Home/ContactUs';
+import FeaturedProducts from '../Components/Home/FeaturedProducts';
 
 const Home = () => {
     const [categories, setCategories] = useState([])
@@ -20,6 +21,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Categories categories={categories}></Categories>
+            <FeaturedProducts></FeaturedProducts>
             <Reviews></Reviews>
             <About></About>
             <ContactUs></ContactUs>

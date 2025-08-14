@@ -1,6 +1,6 @@
 import { Rating } from '@smastrom/react-rating';
 import React, { use, useEffect, useRef, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import AuthContext from '../contexts/AuthContext/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -93,6 +93,17 @@ const ProductDetails = () => {
             })
 
     }
+    const navigate = useNavigate();
+
+    const handleBuyNowButton = () => {
+        if (user) {
+            // User is logged in, open modal
+            document.getElementById('my_modal_1').showModal();
+        } else {
+            // User not logged in, navigate to login page
+            navigate("/sign-in");
+        }
+    };
     // dynamic title
     useEffect(() => {
         document.title = `${productName} | SupplyVista`;
@@ -118,7 +129,7 @@ const ProductDetails = () => {
                             <Rating style={{ maxWidth: 150 }} value={rating} readOnly></Rating>
                         </div>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white transition duration-500" onClick={() => document.getElementById('my_modal_1').showModal()}>Buy Now</button>
+                        <button className="btn bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white transition duration-500" onClick={handleBuyNowButton}>Buy Now</button>
                         <dialog ref={modalRef} id="my_modal_1" className="modal">
 
                             <div className="modal-box">
@@ -133,10 +144,10 @@ const ProductDetails = () => {
                                 <div className="">
                                     <form onSubmit={handleOrder} method='dialog'>
                                         <label className=''>
-                                            <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user.displayName} readOnly disabled />
+                                            <input type="text" placeholder="Type here" className="input mb-3" name='customer' defaultValue={user ? user.displayName : ""} readOnly disabled />
                                         </label>
                                         <label className="input mb-3">
-                                            <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={user.email} readOnly disabled />
+                                            <input type="email" name='customer_email' placeholder="mail@site.com" defaultValue={ user ? user.email : ""} readOnly disabled />
                                         </label>
                                         {/* <div className="validator-hint hidden">Enter valid email address</div> */}
                                         <label className=''>

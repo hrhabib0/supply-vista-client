@@ -31,8 +31,11 @@ const ProductCard = ({ product }) => {
                         <p>{price} BDT</p>
                     </div>
                 </div>
-                <div className="card-actions">
+                {/* <div className="card-actions">
                     <Link to={`/update-product/${_id}`} className="btn bg-[#2563EB] text-white">Update Product</Link>
+                </div> */}
+                <div className="card-actions">
+                    <Link to={`/products/${_id}`} className="bg-[#2563EB] text-white px-4 py-2 rounded-lg text-md hover:bg-blue-700 transition">View Details</Link>
                 </div>
             </div>
         </div>
