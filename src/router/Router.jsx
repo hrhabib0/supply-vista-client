@@ -19,6 +19,7 @@ import MyOrders from "../Pages/MyOrders";
 import Error from "../Pages/Error";
 import MyAddProduct from "../Pages/MyAddProduct";
 import AllCategories from "../Pages/AllCategories";
+import AboutPage from "../Pages/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path: 'my-orders',
         element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+      },
+      {
+        path: 'about',
+        Component: AboutPage,
       },
       {
         path: 'terms-conditions',

@@ -12,6 +12,7 @@ const Navbar = () => {
             <li className='text-white'><NavLink to={'/'}>Home</NavLink></li>
             <li className='text-white'><NavLink to={'/categories'}>Categories</NavLink></li>
             <li className='text-white'><NavLink to={'/products'}>All Products</NavLink></li>
+            <li className='text-white'><NavLink to={'/about'}>About Us</NavLink></li>
 
             {
                 user && <>
@@ -26,7 +27,7 @@ const Navbar = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Register Successfull",
+                    title: "Logged Out Successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -66,7 +67,7 @@ const Navbar = () => {
                                         <FaShoppingCart size={25} className='text-white'/>
                                     </Link>
                                     <Link to={'/my-profile'}><img className='w-12 h-12 rounded-full cursor-pointer' src={user.photoURL} alt="" title={user.displayName} /></Link>
-                                    <a className='btn bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white' onClick={handleSignOut}> Log Out </a>
+                                    <a className='btn btn-sm bg-white text-[#2563EB] hover:bg-[#2563EB] hover:text-white' onClick={handleSignOut}> Log Out </a>
                                 </div>
                                 :
                                 <>
