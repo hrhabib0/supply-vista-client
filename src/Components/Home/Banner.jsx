@@ -11,13 +11,13 @@ const Banner = () => {
     // High-quality, relevant banner slides
     const slides = [
         {
-            img: "https://i.ibb.co.com/ycyCw296/gadgets.jpg",
+            img: "/assets/banner-5.jpg",
             title: "Bulk Orders, Best Prices",
             desc: "Get unbeatable deals when you buy in bulk from trusted suppliers.",
             offer: "Up to 30% OFF on First Order"
         },
         {
-            img: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1",
+            img: "/assets/banner-6.jpg",
             title: "Fast & Reliable Supply",
             desc: "From factory to your doorstep — secure, verified, and on time.",
             offer: "Free Shipping for Orders Over $500"
@@ -28,12 +28,6 @@ const Banner = () => {
             desc: "Connect with verified manufacturers and wholesalers worldwide.",
             offer: "Sign Up & Get $50 Credit"
         },
-        {
-            img: "https://i.ibb.co.com/ycyCw296/gadgets.jpg",
-            title: "Special Seasonal Offers",
-            desc: "Exclusive discounts on health, beauty, fashion & electronics.",
-            offer: "Save Up to 40% This Month"
-        }
     ];
 
     return (
